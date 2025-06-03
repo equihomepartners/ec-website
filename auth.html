@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Portal - Equihome Capital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'navy': '#00224D',
+                        'charcoal': '#2E3440',
+                        'mist': '#F4F5F7',
+                        'logo-white': '#FEFEFE',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-logo-white font-inter">
+    
+    <!-- Main Container -->
+    <div class="min-h-screen flex">
+        
+        <!-- Left Side - Login Form -->
+        <div class="flex-1 flex items-center justify-center px-8 py-12">
+            <div class="max-w-md w-full fade-in">
+                
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="mb-6">
+                        <img
+                            src="ec-full.png"
+                            alt="Equihome Capital"
+                            class="h-16 mx-auto"
+                        />
+                    </div>
+                    <h1 class="font-playfair text-3xl font-semibold text-navy mb-4">
+                        Investor Portal
+                    </h1>
+                    <p class="font-inter text-charcoal">
+                        Secure access for institutional investors
+                    </p>
+                </div>
+                
+                <!-- Login Form -->
+                <form class="space-y-6">
+                    <div>
+                        <label for="email" class="block font-inter text-sm font-medium text-charcoal mb-2">
+                            Email Address
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email"
+                            name="email"
+                            required
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg font-inter text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent transition-all duration-300"
+                            placeholder="investor@institution.com"
+                        />
+                    </div>
+                    
+                    <div>
+                        <label for="password" class="block font-inter text-sm font-medium text-charcoal mb-2">
+                            Password
+                        </label>
+                        <input 
+                            type="password" 
+                            id="password"
+                            name="password"
+                            required
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg font-inter text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent transition-all duration-300"
+                            placeholder="••••••••"
+                        />
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input 
+                                id="remember-me" 
+                                name="remember-me" 
+                                type="checkbox" 
+                                class="h-4 w-4 text-navy focus:ring-navy border-gray-300 rounded"
+                            />
+                            <label for="remember-me" class="ml-2 block font-inter text-sm text-charcoal">
+                                Remember me
+                            </label>
+                        </div>
+                        
+                        <div class="text-sm">
+                            <a href="#" class="font-inter font-medium text-navy hover:text-charcoal transition-colors duration-300">
+                                Forgot password?
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <button 
+                        type="submit"
+                        class="w-full bg-navy text-white py-3 px-4 rounded-lg font-inter font-medium hover:bg-charcoal focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2 transition-all duration-300"
+                    >
+                        Sign In
+                    </button>
+                </form>
+                
+                <!-- Additional Options -->
+                <div class="mt-8 text-center">
+                    <p class="font-inter text-sm text-charcoal mb-4">
+                        Don't have access?
+                    </p>
+                    <a 
+                        href="index.html#contact" 
+                        class="font-inter text-sm font-medium text-navy hover:text-charcoal transition-colors duration-300"
+                    >
+                        Request Investor Access
+                    </a>
+                </div>
+                
+                <!-- Security Notice -->
+                <div class="mt-12 p-4 bg-mist rounded-lg">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-navy mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <div>
+                            <h3 class="font-inter text-sm font-medium text-navy mb-1">
+                                Secure Access
+                            </h3>
+                            <p class="font-inter text-xs text-charcoal">
+                                This portal is restricted to qualified institutional investors. All sessions are encrypted and monitored.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Right Side - Australian Image -->
+        <div class="hidden lg:flex flex-1">
+            <img
+                src="syd-overview.png"
+                alt="Sydney Overview"
+                class="w-full h-full object-cover"
+            />
+        </div>
+        
+    </div>
+    
+    <script>
+        // Fade in animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            setTimeout(() => {
+                fadeElements.forEach(element => {
+                    element.classList.add('visible');
+                });
+            }, 100);
+        });
+        
+        // Form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                // Simulate authentication
+                alert('Authentication successful. Redirecting to investor portal...');
+                // In real implementation, this would handle actual authentication
+            }
+        });
+    </script>
+    
+</body>
+</html>

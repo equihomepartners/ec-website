@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equihome Capital - Prime Australian Home-Equity Credit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#1B365D',
+                        charcoal: '#2E3440',
+                        mist: '#F5E6B8',
+                        'light-navy': '#E8EDF5',
+                        'logo-white': '#FFFFFF',
+                        'brand-blue': '#1B365D',
+                        'brand-gold': '#F9F2E7',
+                        'light-gold': '#FCFAF7',
+                        'ultra-light-gold': '#FEFDFB',
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #00224D;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .tile-hover {
+            transition: all 0.3s ease;
+        }
+        .tile-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 34, 77, 0.15);
+        }
+        .tile-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .tile-hover:hover .tile-content {
+            max-height: 200px;
+        }
+
+        /* Image optimization for high quality rendering */
+        img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            image-rendering: high-quality;
+            -ms-interpolation-mode: bicubic;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+        /* Specific optimization for logos */
+        nav img, footer img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: high-quality;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform;
+        }
+    </style>
+</head>
+<body class="bg-logo-white text-charcoal">
+    <!-- Top Bar -->
+    <nav class="fixed top-0 left-0 right-0 bg-logo-white z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img
+                        src="ec-full.png"
+                        alt="Equihome Capital"
+                        class="h-10 mr-4"
+                    />
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#contact" class="text-navy font-inter font-medium hover:text-charcoal transition-all duration-300">
+                        Contact
+                    </a>
+                    <a href="auth.html" class="bg-brand-blue text-white px-6 py-2 rounded-lg font-inter font-medium hover:bg-navy transition-all duration-300">
+                        Investor Portal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./sydnew.png');"></div>
+
+        <!-- Smooth transition gradient at bottom -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-logo-white via-ultra-light-gold to-transparent z-5"></div>
+
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+            <h1 class="font-playfair text-4xl md:text-5xl font-semibold mb-6 leading-tight fade-in text-white drop-shadow-lg" style="font-size: 38pt;">
+                Prime Australian Home-Equity Credit
+            </h1>
+
+            <!-- Clean separator -->
+            <div class="w-24 h-0.5 bg-white mx-auto mb-8 fade-in drop-shadow-sm"></div>
+
+            <p class="font-inter text-lg md:text-xl leading-relaxed max-w-3xl mx-auto fade-in mb-8 text-white drop-shadow-md" style="font-size: 18pt; width: 70%;">
+                Institutional access to uncorrelated, low-volatility residential appreciation through structured credit instruments backed by prime Australian property equity.
+            </p>
+
+            <div class="fade-in">
+                <button class="bg-white text-navy px-8 py-3 rounded-lg font-inter font-medium text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg">
+                    Investor Portal
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce">
+                <polyline points="6,9 12,15 18,9"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Equihome -->
+    <section id="about" class="bg-gradient-to-b from-logo-white via-ultra-light-gold to-light-gold py-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="font-playfair text-4xl text-navy mb-6">
+                    About Equihome
+                </h2>
+                <p class="font-inter text-lg text-charcoal leading-relaxed max-w-3xl mx-auto">
+                    Equihome Capital Group Inc. serves as the fund management arm overseeing Australian home equity lending operations, connecting institutional capital with homeowner equity. We bridge the interests of our institutional clients seeking residential credit exposure with homeowners looking for seamless access to equity credit.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HEI Asset Class -->
+    <section id="approach" class="bg-gradient-to-b from-light-gold via-brand-gold to-light-gold py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="font-playfair text-4xl text-navy mb-4">
+                    Home Equity Investment Asset Class
+                </h2>
+                <p class="font-inter text-lg text-charcoal max-w-3xl mx-auto">
+                    Established institutional asset class with proven US performance, enhanced by Australian market fundamentals.
+                </p>
+
+                <!-- Product Overview -->
+                <div class="mt-8 max-w-4xl mx-auto text-left">
+                    <h4 class="font-inter text-sm font-semibold text-navy mb-3">• What is HEI?</h4>
+                    <p class="font-inter text-sm text-charcoal leading-relaxed">
+                        Home Equity Investments provide homeowners with immediate capital in exchange for a share of future home appreciation. Homeowners retain ownership <span class="font-inter">&</span> can exit at any time through sale or refinancing, while investors participate in long-term residential value growth through shared appreciation structures.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- US Market Performance -->
+                <div class="fade-in">
+                    <div class="bg-logo-white rounded-xl p-8 h-full">
+                        <h3 class="font-playfair text-xl font-semibold text-navy mb-6 text-center">US Market Track Record</h3>
+
+                        <div class="grid grid-cols-2 gap-6 mb-6">
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-bold text-navy mb-1">17-21%</div>
+                                <div class="font-inter text-sm text-charcoal">Annual Returns</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-bold text-navy mb-1">&lt;1%</div>
+                                <div class="font-inter text-sm text-charcoal">Default Rates</div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-200">
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-bold text-navy mb-1">18mo</div>
+                                <div class="font-inter text-sm text-charcoal">Avg Hold to Exit</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-bold text-navy mb-1">20yr</div>
+                                <div class="font-inter text-sm text-charcoal">Term Length</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Australian Target Market -->
+                <div class="fade-in">
+                    <div class="bg-logo-white rounded-xl p-8 h-full">
+                        <h3 class="font-playfair text-xl font-semibold text-navy mb-6 text-center">Australian Target Market</h3>
+
+                        <div class="grid grid-cols-2 gap-6 mb-6">
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-semibold text-navy mb-1">8%+</div>
+                                <div class="font-inter text-sm text-charcoal">Target Market Appreciation</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-semibold text-navy mb-1"><span class="font-inter text-sm">USD </span>1M+</div>
+                                <div class="font-inter text-sm text-charcoal">Target Avg Equity Per Property</div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-200">
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-semibold text-navy mb-1"><span class="font-inter text-sm">USD </span>2.4M</div>
+                                <div class="font-inter text-sm text-charcoal">Target Median Home Value</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-semibold text-navy mb-1"><span class="font-inter text-sm">USD </span>7T</div>
+                                <div class="font-inter text-sm text-charcoal">Total Addressable Market</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Asset Class -->
+    <section class="bg-gradient-to-b from-light-gold via-brand-gold to-ultra-light-gold flex items-center" style="min-height: 65vh;">
+        <div class="max-w-6xl mx-auto px-6 py-20">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Column -->
+                <div class="fade-in">
+                    <h2 class="font-playfair text-3xl font-semibold text-navy mb-8" style="font-size: 26pt;">
+                        Structured Home-Equity Interests
+                    </h2>
+                    <p class="font-inter text-lg text-charcoal leading-relaxed mb-6">
+                        Our innovative approach reimagines traditional home equity by incorporating bond-like downside protection mechanisms specifically designed for Australian homeowners. This hybrid structure combines the accessibility of conventional home equity loans with the sophisticated risk management of Home Equity Investments (HEI).
+                    </p>
+                    <p class="font-inter text-lg text-charcoal leading-relaxed">
+                        The result is a defensive credit instrument that provides homeowners with flexible capital access while delivering institutional investors an additional layer of protection through our floor structure, mitigating market downturns <span class="font-inter">&</span> enhancing risk-adjusted returns.
+                    </p>
+                </div>
+
+                <!-- Right Column - Enhanced Diagram -->
+                <div class="fade-in">
+                    <div class="bg-logo-white border border-gray-200 p-8 rounded-lg shadow-lg">
+                        <h3 class="font-playfair text-xl text-navy mb-8 text-center">Hybrid Structure Framework</h3>
+
+                        <!-- Risk-Return Matrix -->
+                        <div class="relative mb-8">
+                            <svg viewBox="0 0 400 300" class="w-full h-64">
+                                <!-- Grid lines -->
+                                <defs>
+                                    <pattern id="grid" width="40" height="30" patternUnits="userSpaceOnUse">
+                                        <path d="M 40 0 L 0 0 0 30" fill="none" stroke="#F4F5F7" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#grid)" />
+
+                                <!-- Axes -->
+                                <line x1="50" y1="250" x2="350" y2="250" stroke="#2E3440" stroke-width="2"/>
+                                <line x1="50" y1="250" x2="50" y2="50" stroke="#2E3440" stroke-width="2"/>
+
+                                <!-- Labels -->
+                                <text x="200" y="280" text-anchor="middle" class="font-inter text-xs fill-charcoal">Risk Profile</text>
+                                <text x="25" y="150" text-anchor="middle" class="font-inter text-xs fill-charcoal" transform="rotate(-90 25 150)">Return Potential</text>
+
+                                <!-- Traditional HEL point -->
+                                <circle cx="120" cy="180" r="6" fill="#FF6B6B" opacity="0.8"/>
+                                <text x="120" y="200" text-anchor="middle" class="font-inter text-xs fill-charcoal">Traditional HEL</text>
+
+                                <!-- Standard HEI point -->
+                                <circle cx="280" cy="120" r="6" fill="#4ECDC4" opacity="0.8"/>
+                                <text x="280" y="140" text-anchor="middle" class="font-inter text-xs fill-charcoal">Standard HEI</text>
+
+                                <!-- Our hybrid point -->
+                                <circle cx="200" cy="100" r="8" fill="#00224D"/>
+                                <text x="200" y="85" text-anchor="middle" class="font-inter text-xs fill-navy font-semibold">Equihome Hybrid</text>
+
+                                <!-- Efficiency frontier curve -->
+                                <path d="M 80 220 Q 150 120 200 100 Q 250 85 320 90" stroke="#00224D" stroke-width="2" fill="none" opacity="0.3" stroke-dasharray="5,5"/>
+                            </svg>
+                        </div>
+
+                        <!-- Key Features -->
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-light-gold p-4 rounded">
+                                <div class="font-inter font-semibold text-navy mb-2">Downside Protection</div>
+                                <div class="font-inter text-charcoal">Bond-like floor mechanism</div>
+                            </div>
+                            <div class="bg-light-gold p-4 rounded">
+                                <div class="font-inter font-semibold text-navy mb-2">Upside Participation</div>
+                                <div class="font-inter text-charcoal">Shared appreciation model</div>
+                            </div>
+                            <div class="bg-light-gold p-4 rounded">
+                                <div class="font-inter font-semibold text-navy mb-2">Credit Enhancement</div>
+                                <div class="font-inter text-charcoal">Dual-layer security structure</div>
+                            </div>
+                            <div class="bg-light-gold p-4 rounded">
+                                <div class="font-inter font-semibold text-navy mb-2">Market Adaptation</div>
+                                <div class="font-inter text-charcoal">Australian-specific design</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Australian Residential Credit Markets -->
+    <section id="australian-markets" class="bg-gradient-to-b from-ultra-light-gold via-light-gold to-logo-white py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-playfair text-4xl md:text-5xl text-navy mb-8">
+                    Australian Residential Credit Markets
+                </h2>
+                <p class="font-inter text-xl text-charcoal max-w-3xl mx-auto">
+                    Concentrated market dynamics <span class="font-inter">&</span> superior credit quality create compelling institutional opportunity in Australian residential equity markets.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: Visual -->
+                <div class="fade-in">
+                    <div class="bg-logo-white rounded-xl p-6 shadow-sm">
+                        <img src="bondi.jpg" alt="Bondi Beach Sydney" class="w-full h-64 object-cover rounded-lg mb-6">
+
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-semibold text-navy mb-1"><span class="font-inter">USD</span>3T+</div>
+                                <div class="font-inter text-sm text-charcoal">Untapped Home Equity</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-playfair text-2xl font-semibold text-navy mb-1">4 Cities</div>
+                                <div class="font-inter text-sm text-charcoal">75% Market Value</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="fade-in">
+                    <!-- Key Advantages -->
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-playfair text-xl font-semibold text-navy mb-3">Market Concentration</h3>
+                            <p class="font-inter text-charcoal">Four major cities contain 75% of total market value, enabling focused deployment <span class="font-inter">&</span> operational efficiency.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-playfair text-xl font-semibold text-navy mb-3">Credit Quality</h3>
+                            <p class="font-inter text-charcoal">0.35% mortgage arrears rate demonstrates superior borrower quality <span class="font-inter">&</span> market stability compared to global peers.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-playfair text-xl font-semibold text-navy mb-3">Institutional Barriers</h3>
+                            <p class="font-inter text-charcoal">High stamp duty costs <span class="font-inter">&</span> regulatory constraints prevent direct institutional access, creating structured opportunity.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-playfair text-xl font-semibold text-navy mb-3">Technology Infrastructure</h3>
+                            <p class="font-inter text-charcoal">Most digitized real estate ecosystem globally enables instant valuations, partnership-led origination <span class="font-inter">&</span> selective underwriting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Data Integration -->
+            <div class="mt-16 fade-in">
+                <div class="text-center mb-8">
+                    <h3 class="font-playfair text-2xl font-semibold text-navy mb-2">
+                        Global Market Comparison
+                    </h3>
+                </div>
+
+                <div class="bg-logo-white p-6 rounded-xl shadow-sm max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Key Metrics -->
+                        <div>
+                            <h4 class="font-playfair text-lg font-semibold text-navy mb-4">30-Year Appreciation</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-inter text-navy font-semibold">Sydney</span>
+                                    <span class="font-inter font-semibold text-navy">5.3%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-inter text-charcoal">NYC</span>
+                                    <span class="font-inter text-charcoal">4.6%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-inter text-charcoal">London</span>
+                                    <span class="font-inter text-charcoal">4.4%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-playfair text-lg font-semibold text-navy mb-4">Median Prices (<span class="font-inter">USD</span>)</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-inter text-navy font-semibold">Sydney</span>
+                                    <span class="font-inter font-semibold text-navy">1.06M</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-inter text-charcoal">NYC</span>
+                                    <span class="font-inter text-charcoal">0.81M</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-inter text-charcoal">London</span>
+                                    <span class="font-inter text-charcoal">0.70M</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-inter text-xs text-charcoal mt-4 opacity-70 text-center">Sources: CoreLogic AU, S&P Case-Shiller, ONS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter & Contact Combined Section -->
+    <section id="newsletter" class="relative overflow-hidden">
+        <!-- Smooth transition gradient at top -->
+        <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-logo-white to-transparent z-20"></div>
+
+        <!-- Background Visual - Covers Both Newsletter and Contact -->
+        <div class="absolute inset-0">
+            <img src="sydney-pic.png" alt="Sydney Skyline" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Contact Section -->
+        <div class="py-20 relative z-10">
+            <div class="max-w-2xl mx-auto px-6 mb-16">
+                <div class="fade-in">
+                    <!-- Newsletter Section - moved above contact -->
+                    <div class="text-center mb-6">
+                        <div class="backdrop-blur-sm bg-navy bg-opacity-20 rounded-xl p-6 shadow-lg mb-8">
+                            <h2 class="font-playfair text-2xl font-semibold text-white mb-3">
+                                Stay Updated with Equihome Capital
+                            </h2>
+                            <p class="font-inter text-white opacity-90 mb-6">
+                                Quarterly insights on Australian residential credit markets
+                            </p>
+
+                            <div class="max-w-sm mx-auto">
+                                <form id="newsletter-form" class="flex gap-2">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email address"
+                                        required
+                                        class="flex-1 px-3 py-2 border border-gray-300 rounded-lg font-inter text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent bg-white bg-opacity-95 text-sm"
+                                    />
+                                    <button type="submit" class="bg-white text-navy px-4 py-2 rounded-lg font-inter font-medium hover:bg-gray-100 transition-all duration-300 whitespace-nowrap text-sm">
+                                        Subscribe
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="py-8 relative z-10">
+            <div class="max-w-2xl mx-auto px-6">
+                <div class="fade-in">
+                    <div class="backdrop-blur-sm bg-navy bg-opacity-25 rounded-xl p-6 shadow-lg">
+                        <div class="text-center mb-8">
+                            <h2 class="font-playfair text-2xl font-semibold text-white mb-3">
+                                Get In Touch
+                            </h2>
+                            <p class="font-inter text-white opacity-90">
+                                Investment inquiries <span class="font-inter">&</span> partnership opportunities
+                            </p>
+                        </div>
+
+                        <form id="contact-form" class="max-w-md mx-auto space-y-4">
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email address"
+                                required
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg font-inter text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent bg-white bg-opacity-90"
+                            />
+                            <textarea
+                                name="message"
+                                placeholder="Message"
+                                rows="4"
+                                required
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg font-inter text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent resize-none bg-white bg-opacity-90"
+                            ></textarea>
+                            <button type="submit" class="w-full bg-white text-navy py-3 rounded-lg font-inter font-medium hover:bg-gray-100 transition-all duration-300">
+                                Send Message
+                            </button>
+                        </form>
+                            <div class="text-center pt-2">
+                                <p class="font-inter text-xs text-white opacity-70">
+                                    Response within 24 hours
+                                </p>
+                                <p class="font-inter text-sm text-white mt-2">
+                                    <a href="mailto:investors@equihomecapital.com" class="hover:text-gray-200 transition-colors duration-300">
+                                        investors@equihomecapital.com
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-logo-white text-brand-blue py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="mb-4">
+                        <img
+                            src="ec-logo.png"
+                            alt="Equihome Capital"
+                            class="h-10 mb-2"
+                        />
+                        <div class="font-playfair text-xl font-semibold">Equihome Capital Group Inc.</div>
+                    </div>
+                    <p class="font-inter opacity-80 mb-6 leading-relaxed">
+                        Structured home-equity interests delivering institutional access to Australian residential appreciation through innovative credit instruments.
+                    </p>
+                    <div class="font-inter">
+                        <a href="mailto:investors@equihomecapital.com" class="hover:text-navy transition-colors duration-300">
+                            investors@equihomecapital.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-playfair text-lg font-semibold mb-4">Investment</h4>
+                    <ul class="font-inter space-y-3 opacity-80">
+                        <li><a href="#about" class="hover:text-navy transition-colors duration-300">About</a></li>
+                        <li><a href="#approach" class="hover:text-navy transition-colors duration-300">Approach</a></li>
+                        <li><a href="#australian-markets" class="hover:text-navy transition-colors duration-300">Australian Markets</a></li>
+                        <li><a href="#contact" class="hover:text-navy transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect -->
+                <div>
+                    <h4 class="font-playfair text-lg font-semibold mb-4">Connect</h4>
+                    <ul class="font-inter space-y-3 opacity-80">
+                        <li>
+                            <a href="#contact" class="hover:text-navy transition-colors duration-300">
+                                Investment Inquiry
+                            </a>
+                        </li>
+                        <li><a href="auth.html" class="hover:text-navy transition-colors duration-300">Investor Portal</a></li>
+                        <li><a href="mailto:investors@equihomecapital.com" class="hover:text-navy transition-colors duration-300">Email Us</a></li>
+                        <li><a href="#newsletter" class="hover:text-navy transition-colors duration-300">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-brand-blue border-opacity-20 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="font-inter text-sm opacity-60 mb-4 md:mb-0">
+                        © 2025 Equihome Capital Group Inc. All rights reserved.
+                    </div>
+                    <div class="flex items-center space-x-6 font-inter text-sm opacity-60">
+                        <a href="#about" class="hover:text-navy transition-colors duration-300">About</a>
+                        <a href="#approach" class="hover:text-navy transition-colors duration-300">Investment Approach</a>
+                        <a href="#australian-markets" class="hover:text-navy transition-colors duration-300">Australian Markets</a>
+                        <a href="auth.html" class="hover:text-navy transition-colors duration-300">Investor Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-8 relative">
+            <button onclick="closeContactForm()" class="absolute top-4 right-4 text-charcoal hover:text-navy">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
+            <h3 class="font-playfair text-2xl font-semibold text-navy mb-6">Get In Touch</h3>
+
+            <form class="space-y-4">
+                <div>
+                    <input
+                        type="email"
+                        placeholder="Email Address"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg font-inter text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
+                        required
+                    />
+                </div>
+                <div>
+                    <textarea
+                        placeholder="Message or inquiry"
+                        rows="4"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg font-inter text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent resize-none"
+                        required
+                    ></textarea>
+                </div>
+                <button
+                    type="submit"
+                    class="w-full bg-navy text-white py-3 rounded-lg font-inter font-medium hover:bg-charcoal transition-all duration-300"
+                >
+                    Send Message
+                </button>
+            </form>
+
+            <p class="font-inter text-xs text-charcoal opacity-70 mt-4 text-center">
+                For institutional investors only. We'll respond within 24 hours.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initial fade in for hero elements
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in').forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 200);
+            });
+        }, 500);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact form functions
+        function openContactForm() {
+            document.getElementById('contactModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactForm() {
+            document.getElementById('contactModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactForm();
+            }
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactForm();
+            }
+        });
+
+        // EmailJS initialization
+        emailjs.init("NyHXRGJccYrIprX3qeIAj");
+
+        // Newsletter form handler
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = this.querySelector('input[name="email"]').value;
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+
+            button.textContent = 'Subscribing...';
+            button.disabled = true;
+
+            emailjs.send("service_czpqokr", "template_8u2pvzh", {
+                to_email: "investors@equihomecapital.com",
+                from_email: email,
+                subject: "Newsletter Subscription - Equihome Capital",
+                message: `New newsletter subscription from: ${email}`,
+                form_type: "newsletter"
+            }).then(function() {
+                showSuccessMessage("Thank you for subscribing! We'll send you quarterly updates.");
+                document.getElementById('newsletter-form').reset();
+            }).catch(function(error) {
+                showErrorMessage("Error subscribing. Please try again or email us directly.");
+                console.error('EmailJS error:', error);
+            }).finally(function() {
+                button.textContent = originalText;
+                button.disabled = false;
+            });
+        });
+
+        // Contact form handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = this.querySelector('input[name="email"]').value;
+            const message = this.querySelector('textarea[name="message"]').value;
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+
+            button.textContent = 'Sending...';
+            button.disabled = true;
+
+            emailjs.send("service_czpqokr", "template_8u2pvzh", {
+                to_email: "investors@equihomecapital.com",
+                from_email: email,
+                subject: "Investment Inquiry - Equihome Capital",
+                message: `Investment inquiry from: ${email}\n\nMessage: ${message}`,
+                form_type: "contact"
+            }).then(function() {
+                showSuccessMessage("Thank you for your inquiry! We'll respond within 24 hours.");
+                document.getElementById('contact-form').reset();
+            }).catch(function(error) {
+                showErrorMessage("Error sending message. Please try again or email us directly.");
+                console.error('EmailJS error:', error);
+            }).finally(function() {
+                button.textContent = originalText;
+                button.disabled = false;
+            });
+        });
+
+        // Success/error message functions
+        function showSuccessMessage(text) {
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="position: fixed; top: 20px; right: 20px; background: #10B981; color: white; padding: 15px 20px; border-radius: 8px; z-index: 1000; font-family: Inter, sans-serif; max-width: 300px;">
+                    ✓ ${text}
+                </div>
+            `;
+            document.body.appendChild(message);
+            setTimeout(() => message.remove(), 5000);
+        }
+
+        function showErrorMessage(text) {
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="position: fixed; top: 20px; right: 20px; background: #EF4444; color: white; padding: 15px 20px; border-radius: 8px; z-index: 1000; font-family: Inter, sans-serif; max-width: 300px;">
+                    ✗ ${text}
+                </div>
+            `;
+            document.body.appendChild(message);
+            setTimeout(() => message.remove(), 5000);
+        }
+
+        // Check for success/error messages in URL
+        const urlParams = new URLSearchParams(window.location.search);
+
+        if (urlParams.get('success') === '1') {
+            // Show success message
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="position: fixed; top: 20px; right: 20px; background: #10B981; color: white; padding: 15px 20px; border-radius: 8px; z-index: 1000; font-family: Inter, sans-serif;">
+                    ✓ Message sent successfully! We'll respond within 24 hours.
+                </div>
+            `;
+            document.body.appendChild(message);
+
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                message.remove();
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }, 5000);
+        }
+
+        if (urlParams.get('error') === '1') {
+            // Show error message
+            const message = document.createElement('div');
+            message.innerHTML = `
+                <div style="position: fixed; top: 20px; right: 20px; background: #EF4444; color: white; padding: 15px 20px; border-radius: 8px; z-index: 1000; font-family: Inter, sans-serif;">
+                    ✗ Error sending message. Please try again or email us directly.
+                </div>
+            `;
+            document.body.appendChild(message);
+
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                message.remove();
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
