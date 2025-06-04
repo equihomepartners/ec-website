@@ -742,6 +742,12 @@
         // EmailJS initialization
         emailjs.init("NyHXRGJccYrIprX3qeIAj");
 
+        // Email validation function
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
         // Newsletter form handler
         document.getElementById('newsletter-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -749,6 +755,12 @@
             const email = this.querySelector('input[name="email"]').value;
             const button = this.querySelector('button[type="submit"]');
             const originalText = button.textContent;
+
+            // Validate email
+            if (!isValidEmail(email)) {
+                showErrorMessage('Please enter a valid email address');
+                return;
+            }
 
             button.textContent = 'Subscribing...';
             button.disabled = true;
@@ -779,6 +791,18 @@
             const message = this.querySelector('textarea[name="message"]').value;
             const button = this.querySelector('button[type="submit"]');
             const originalText = button.textContent;
+
+            // Validate email
+            if (!isValidEmail(email)) {
+                showErrorMessage('Please enter a valid email address');
+                return;
+            }
+
+            // Validate message
+            if (!message.trim()) {
+                showErrorMessage('Please enter a message');
+                return;
+            }
 
             button.textContent = 'Sending...';
             button.disabled = true;

@@ -79,57 +79,70 @@
                 </div>
                 
                 <!-- Login Form -->
-                <form class="space-y-6">
+                <form id="login-form" class="space-y-6">
                     <div>
                         <label for="email" class="block font-inter text-sm font-medium text-charcoal mb-2">
                             Email Address
                         </label>
-                        <input 
-                            type="email" 
+                        <input
+                            type="email"
                             id="email"
                             name="email"
                             required
                             class="w-full px-4 py-3 border border-gray-200 rounded-lg font-inter text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent transition-all duration-300"
                             placeholder="investor@institution.com"
                         />
+                        <div id="email-error" class="text-red-500 text-xs mt-1 hidden">Please enter a valid email address</div>
                     </div>
-                    
+
                     <div>
                         <label for="password" class="block font-inter text-sm font-medium text-charcoal mb-2">
                             Password
                         </label>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             id="password"
                             name="password"
                             required
                             class="w-full px-4 py-3 border border-gray-200 rounded-lg font-inter text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent transition-all duration-300"
                             placeholder="••••••••"
                         />
+                        <div id="password-error" class="text-red-500 text-xs mt-1 hidden">Password is required</div>
                     </div>
-                    
+
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
-                            <input 
-                                id="remember-me" 
-                                name="remember-me" 
-                                type="checkbox" 
+                            <input
+                                id="remember-me"
+                                name="remember-me"
+                                type="checkbox"
                                 class="h-4 w-4 text-navy focus:ring-navy border-gray-300 rounded"
                             />
                             <label for="remember-me" class="ml-2 block font-inter text-sm text-charcoal">
                                 Remember me
                             </label>
                         </div>
-                        
+
                         <div class="text-sm">
                             <a href="#" class="font-inter font-medium text-navy hover:text-charcoal transition-colors duration-300">
                                 Forgot password?
                             </a>
                         </div>
                     </div>
-                    
-                    <button 
+
+                    <!-- Error Message -->
+                    <div id="login-error" class="bg-red-50 border border-red-200 rounded-lg p-3 hidden">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-red-700 text-sm font-inter">Invalid credentials or no access permission</span>
+                        </div>
+                    </div>
+
+                    <button
                         type="submit"
+                        id="login-button"
                         class="w-full bg-navy text-white py-3 px-4 rounded-lg font-inter font-medium hover:bg-charcoal focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2 transition-all duration-300"
                     >
                         Sign In
@@ -141,12 +154,12 @@
                     <p class="font-inter text-sm text-charcoal mb-4">
                         Don't have access?
                     </p>
-                    <a 
-                        href="index.html#contact" 
-                        class="font-inter text-sm font-medium text-navy hover:text-charcoal transition-colors duration-300"
+                    <button
+                        onclick="openAccessRequestModal()"
+                        class="font-inter text-sm font-medium text-navy hover:text-charcoal transition-colors duration-300 underline"
                     >
                         Request Investor Access
-                    </a>
+                    </button>
                 </div>
                 
                 <!-- Security Notice -->
@@ -179,31 +192,225 @@
         </div>
         
     </div>
-    
+
+    <!-- Access Request Modal -->
+    <div id="accessRequestModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-8 relative">
+            <button onclick="closeAccessRequestModal()" class="absolute top-4 right-4 text-charcoal hover:text-navy">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
+            <h3 class="font-playfair text-2xl font-semibold text-navy mb-6">Request Investor Access</h3>
+
+            <form id="access-request-form" class="space-y-4">
+                <div>
+                    <label class="block font-inter text-sm font-medium text-charcoal mb-2">Full Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg font-inter text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
+                        placeholder="Your full name"
+                    />
+                </div>
+                <div>
+                    <label class="block font-inter text-sm font-medium text-charcoal mb-2">Email Address</label>
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg font-inter text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
+                        placeholder="institutional@email.com"
+                    />
+                </div>
+                <div>
+                    <label class="block font-inter text-sm font-medium text-charcoal mb-2">Institution/Organization</label>
+                    <input
+                        type="text"
+                        name="institution"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg font-inter text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
+                        placeholder="Institution name"
+                    />
+                </div>
+                <div>
+                    <label class="block font-inter text-sm font-medium text-charcoal mb-2">Investment Interest</label>
+                    <select
+                        name="investment_interest"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg font-inter text-charcoal focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent"
+                    >
+                        <option value="">Select investment focus</option>
+                        <option value="Direct Investment">Direct Investment</option>
+                        <option value="Fund Partnership">Fund Partnership</option>
+                        <option value="Strategic Alliance">Strategic Alliance</option>
+                        <option value="Market Intelligence">Market Intelligence</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-inter text-sm font-medium text-charcoal mb-2">Message</label>
+                    <textarea
+                        name="message"
+                        rows="3"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg font-inter text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-navy focus:border-transparent resize-none"
+                        placeholder="Brief description of your investment objectives"
+                    ></textarea>
+                </div>
+                <button
+                    type="submit"
+                    class="w-full bg-navy text-white py-3 rounded-lg font-inter font-medium hover:bg-charcoal transition-all duration-300"
+                >
+                    Submit Request
+                </button>
+            </form>
+
+            <p class="font-inter text-xs text-charcoal opacity-70 mt-4 text-center">
+                For qualified institutional investors only. We'll respond within 24 hours.
+            </p>
+        </div>
+    </div>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <script>
+        // EmailJS initialization
+        emailjs.init("NyHXRGJccYrIprX3qeIAj");
+
+        // Email validation function
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Show error message
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+
+        // Hide error message
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.classList.add('hidden');
+        }
+
+        // Login form handler
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const button = document.getElementById('login-button');
+            const originalText = button.textContent;
+
+            // Reset errors
+            hideError('email-error');
+            hideError('password-error');
+            hideError('login-error');
+
+            // Validate email
+            if (!isValidEmail(email)) {
+                showError('email-error', 'Please enter a valid email address');
+                return;
+            }
+
+            // Validate password
+            if (!password) {
+                showError('password-error', 'Password is required');
+                return;
+            }
+
+            // Show loading state
+            button.textContent = 'Signing In...';
+            button.disabled = true;
+
+            // Simulate authentication (always fails since no real backend)
+            setTimeout(() => {
+                document.getElementById('login-error').classList.remove('hidden');
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 1500);
+        });
+
+        // Access request modal functions
+        function openAccessRequestModal() {
+            document.getElementById('accessRequestModal').classList.remove('hidden');
+        }
+
+        function closeAccessRequestModal() {
+            document.getElementById('accessRequestModal').classList.add('hidden');
+            document.getElementById('access-request-form').reset();
+        }
+
+        // Access request form handler
+        document.getElementById('access-request-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+
+            // Validate email
+            const email = formData.get('email');
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            button.textContent = 'Sending Request...';
+            button.disabled = true;
+
+            // Send email via EmailJS
+            emailjs.send("service_czpqokr", "template_8u2pvzh", {
+                to_email: "investors@equihomecapital.com",
+                from_email: formData.get('email'),
+                subject: "Investor Access Request - Equihome Capital",
+                message: `New investor access request:
+
+Name: ${formData.get('name')}
+Email: ${formData.get('email')}
+Institution: ${formData.get('institution')}
+Investment Interest: ${formData.get('investment_interest')}
+
+Message:
+${formData.get('message')}
+
+---
+Sent via Equihome Capital Investor Portal`,
+                form_type: "investor_access_request"
+            }).then(function() {
+                alert('Access request submitted successfully! We\'ll respond within 24 hours.');
+                closeAccessRequestModal();
+            }).catch(function(error) {
+                alert('Error sending request. Please try again or email us directly.');
+                console.error('EmailJS error:', error);
+            }).finally(function() {
+                button.textContent = originalText;
+                button.disabled = false;
+            });
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('accessRequestModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAccessRequestModal();
+            }
+        });
+
         // Fade in animation
         document.addEventListener('DOMContentLoaded', function() {
             const fadeElements = document.querySelectorAll('.fade-in');
-            
+
             setTimeout(() => {
                 fadeElements.forEach(element => {
                     element.classList.add('visible');
                 });
             }, 100);
-        });
-        
-        // Form validation
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            if (email && password) {
-                // Simulate authentication
-                alert('Authentication successful. Redirecting to investor portal...');
-                // In real implementation, this would handle actual authentication
-            }
         });
     </script>
     
