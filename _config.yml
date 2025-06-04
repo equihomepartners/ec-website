@@ -1,0 +1,19 @@
+# Jekyll configuration for GitHub Pages
+permalink: pretty
+
+# Remove .html extension from URLs
+plugins:
+  - jekyll-redirect-from
+
+# Default layout
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - .htaccess
